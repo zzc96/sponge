@@ -23,7 +23,7 @@ class StreamReassembler {
       }
     };
     std::set<block_node> _blocks = {};
-    std::vector<char> _buffer = {};
+    // std::vector<char> _buffer = {};
     size_t _unassemble_byte = 0;
     size_t _head_index = 0;
     bool _eof_flag = false;

@@ -13,7 +13,7 @@ void DUMMY_CODE(Targs &&... /* unused */) {}
 using namespace std;
 
 StreamReassembler::StreamReassembler(const size_t capacity) : _output(capacity), _capacity(capacity) {
-    _buffer.resize(capacity);
+    // _buffer.resize(capacity);
 }
 
 long StreamReassembler::merge_block(block_node &elm1, const block_node &elm2){
@@ -48,7 +48,7 @@ void StreamReassembler::push_substring(const string &data, const size_t index, c
 
     //handle extra substring prefix
     block_node elm;
-    if (index + data.length() <= _head_index){
+    if (index + data.length() <= _head_index){ //already write to bytestream
         goto JUDGE_EOF;
     } else if (index < _head_index) {
         size_t offset = _head_index - index;
@@ -67,7 +67,7 @@ void StreamReassembler::push_substring(const string &data, const size_t index, c
     {
         //merge next
         long merged_bytes = 0;
-        auto iter = _blocks.lower_bound(elm);
+        auto iter = _blocks.lower_bound(elm); // lower_bound返回不小于目标值的第一个对象的迭代器
         while (iter != _blocks.end() && (merged_bytes = merge_block(elm, *iter)) >= 0) {
             _unassemble_byte -= merged_bytes;
             _blocks.erase(iter);
