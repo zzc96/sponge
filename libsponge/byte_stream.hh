@@ -3,6 +3,7 @@
 
 #include <string>
 #include <deque>
+#include "util/buffer.hh"
 
 //! \brief An in-order byte stream.
 
@@ -17,7 +18,7 @@ class ByteStream {
     // all, but if any of your tests are taking longer than a second,
     // that's a sign that you probably want to keep exploring
     // different approaches.
-    std::deque<char> _buffer = {};
+    BufferList _buffer = {};
     size_t _capacity = 0;
     size_t _read_count = 0;
     size_t _write_count = 0;
