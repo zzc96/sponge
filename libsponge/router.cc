@@ -74,6 +74,6 @@ void Router::route() {
 bool Router::prefix_equal(uint32_t ip1, uint32_t ip2, uint8_t len) {
     // special judge right when shift 32 bit
     uint32_t offset = (len == 0) ? 0 : 0xffffffff << (32 - len);
-    printf("ip cmp: %x %x, offset: %x\n", ip1 & offset, ip2 & offset, offset);
+    //printf("ip cmp: %x %x, offset: %x\n", ip1 & offset, ip2 & offset, offset);
     return (ip1 & offset) == (ip2 & offset);
 }
